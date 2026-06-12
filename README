@@ -1,0 +1,53 @@
+# ♻️ Tri des déchets — Classifier automatique
+
+## Description
+Application de classification de déchets basée sur le deep learning.
+Upload une photo d'un déchet et le modèle identifie dans quelle poubelle le jeter.
+
+## Classes détectées
+- 📦 Cardboard (Carton)
+- 🍾 Glass (Verre)
+- 🥫 Metal (Métal)
+- 📄 Paper (Papier)
+- 🧴 Plastic (Plastique)
+- 🗑️ Trash (Ordures)
+
+## Modèle
+- Architecture : ResNet18 pré-entraîné sur ImageNet (transfer learning)
+- Stratégie : Feature extraction — backbone gelé, seule la tête est entraînée
+- Dataset : TrashNet (~2527 images, 6 classes)
+- Accuracy test : 80%
+
+## Stack technique
+- PyTorch / TorchVision
+- FastAPI (API locale)
+- Gradio + Hugging Face Spaces (déploiement)
+
+## Démo en ligne
+👉 https://huggingface.co/spaces/elkatraz/tri-dechets
+
+## Fichiers du projet
+👉 https://huggingface.co/spaces/elkatraz/tri-dechets/tree/main
+
+## Lancer en local
+```bash
+pip install torch torchvision fastapi uvicorn pillow python-multipart
+python train.py
+uvicorn app:app --reload
+```
+
+## Structure du projet
+```
+projetML/
+├── dataset/          # TrashNet (non inclus)
+├── train.py          # Entraînement du modèle
+├── app.py            # API FastAPI locale
+├── app_gradio.py     # Interface Gradio (HuggingFace)
+├── model.pth         # Modèle sauvegardé
+└── requirements.txt
+```
+
+## Auteurs
+Projet réalisé par :
+- Yassine Ait-El Hachemi
+- Mohammed Elkaddouri
